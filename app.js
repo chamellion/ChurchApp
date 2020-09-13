@@ -4,9 +4,13 @@ require('dotenv').config();
 
 const app = express();
 
-app.get('/', (req, res)=>{
-   res.send('Testing Testing!!!! Server up and ready');
-});
+app.use(express.json())
+
+//bringing in my goons(routers)
+const routers = require('./routes/ChurchJSRoute')
+
+
+app.use('/api', routers)
 
 const mongoURL = process.env.MONGO_LOCAL_URL
 

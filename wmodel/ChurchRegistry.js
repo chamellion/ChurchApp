@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 require('dotenv').config()
 
-const regex = process.env.REGEX
+let regex = require('../views/Constants')
 
 const databaseSchema = new mongoose.Schema({
     name: {
@@ -19,7 +19,7 @@ const databaseSchema = new mongoose.Schema({
       required : [true, 'How do we reach this church member, you too think about it'],
       validate: {
           validator: function (number) {
-              return /\d{11}/.test(number);
+              return /\d{10}/.test(number);
           },
           message : props => `${props.value} is not a valid number`
       }
